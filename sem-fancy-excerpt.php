@@ -3,8 +3,8 @@
 Plugin Name: Fancy Excerpt
 Plugin URI: http://www.semiologic.com/software/fancy-excerpt/
 Description: Enhances WordPress' default excerpt generator by generating paragraph aware excerpts followed by more... links.
-Version: 3.0.1
-Author: Denis de Bernardy
+Version: 3.0.2
+Author: Denis de Bernardy & Mike Koepke
 Author URI: http://www.getsemiologic.com
 Text Domain: fancy-excerpt
 Domain Path: /lang
@@ -59,7 +59,7 @@ class fancy_excerpt {
 			
 			$bits = preg_split("/(<(?:h[1-6]|p|ul|ol|li|dl|dd|table|tr|pre|blockquote)\b[^>]*>|\n{2,})/i", $text, null, PREG_SPLIT_DELIM_CAPTURE);
 			$text = '';
-			$length = 0;
+			$count = 0;
 
 			foreach ( $bits as $bit ) {
 				$text .= $bit;
