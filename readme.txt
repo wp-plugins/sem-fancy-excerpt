@@ -58,6 +58,11 @@ I'm aware. Last I checked, there wasn't anything I could do about it.
 
 == Change Log ==
 
+= 3.1 =
+
+- Add hack to correct ShareThis plugin adding double rows of buttons.  ShareThis really needs an option to not include in excerpts.
+- Added Norwegian language file (props TJ Bratveit)
+
 = 3.0.2 =
 
 - Fix uninitialized variable

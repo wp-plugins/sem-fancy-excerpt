@@ -3,7 +3,7 @@
 Plugin Name: Fancy Excerpt
 Plugin URI: http://www.semiologic.com/software/fancy-excerpt/
 Description: Enhances WordPress' default excerpt generator by generating paragraph aware excerpts followed by more... links.
-Version: 3.0.2
+Version: 3.1
 Author: Denis de Bernardy & Mike Koepke
 Author URI: http://www.getsemiologic.com
 Text Domain: fancy-excerpt
@@ -85,6 +85,12 @@ class fancy_excerpt {
 				. '</p>' . "\n";
 		}
 
+        // add hack for ShareThis.  It hooks both excerpt and context hooks and generates double row entries.  There is
+        // its own hack to fix this but it's code gets called after our filter.  They should have an option to exclude
+        // from exceprts like Digg Digg.
+        if ( function_exists('st_add_widget'))
+       	    remove_action('the_content', 'st_add_widget');
+
 		$text = apply_filters('the_content', $text);
 
 		return apply_filters('wp_trim_excerpt', $text, '');
@@ -155,5 +161,5 @@ class fancy_excerpt {
 } # fancy_excerpt
 
 remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-add_filter('get_the_excerpt', array('fancy_excerpt', 'trim_excerpt'), 0);
+add_filter('get_the_excerpt', array('fancy_excerpt', 'trim_excerpt'), 1);
 ?>
