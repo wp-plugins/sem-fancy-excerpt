@@ -3,7 +3,7 @@
 Plugin Name: Fancy Excerpt
 Plugin URI: http://www.semiologic.com/software/fancy-excerpt/
 Description: Enhances WordPress' default excerpt generator by generating paragraph aware excerpts followed by more... links.
-Version: 3.1
+Version: 3.2
 Author: Denis de Bernardy & Mike Koepke
 Author URI: http://www.getsemiologic.com
 Text Domain: fancy-excerpt
@@ -30,7 +30,15 @@ load_plugin_textdomain('fancy-excerpt', false, dirname(plugin_basename(__FILE__)
  **/
 
 class fancy_excerpt {
-	/**
+    /**
+     * fancy_excerpt()
+     */
+    function fancy_excerpt() {
+        remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+        add_filter('get_the_excerpt', array($this, 'trim_excerpt'), 1);
+    }
+
+    /**
 	 * trim_excerpt()
 	 *
 	 * @param string $text
@@ -117,7 +125,7 @@ class fancy_excerpt {
 				<\s*\/\s*\\1\s*>
 				/isx",
 			) as $regex ) {
-			$text = preg_replace_callback($regex, array('fancy_excerpt', 'escape_callback'), $text);
+			$text = preg_replace_callback($regex, array($this, 'escape_callback'), $text);
 		}
 		
 		return $text;
@@ -160,6 +168,5 @@ class fancy_excerpt {
 	} # unescape()
 } # fancy_excerpt
 
-remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-add_filter('get_the_excerpt', array('fancy_excerpt', 'trim_excerpt'), 1);
+$fancy_excerpt = new fancy_excerpt();
 ?>
