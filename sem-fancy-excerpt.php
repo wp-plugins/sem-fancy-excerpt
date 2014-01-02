@@ -3,20 +3,19 @@
 Plugin Name: Fancy Excerpt
 Plugin URI: http://www.semiologic.com/software/fancy-excerpt/
 Description: Enhances WordPress' default excerpt generator by generating paragraph aware excerpts followed by more... links.
-Version: 3.2
+Version: 3.3
 Author: Denis de Bernardy & Mike Koepke
 Author URI: http://www.getsemiologic.com
 Text Domain: fancy-excerpt
 Domain Path: /lang
+License: Dual licensed under the MIT and GPLv2 licenses
 */
 
 /*
 Terms of use
 ------------
 
-This software is copyright Mesoconcepts (http://www.mesoconcepts.com), and is distributed under the terms of the GPL license, v.2.
-
-http://www.opensource.org/licenses/gpl-2.0.php
+This software is copyright Denis de Bernardy & Mike Koepke, and is distributed under the terms of the MIT and GPLv2 licenses.
 **/
 
 
@@ -86,10 +85,11 @@ class fancy_excerpt {
 			
 			$text .= "\n\n"
 				. '<p>'
-				. apply_filters('the_content_more_link',
-					'<a href="'. esc_url(apply_filters('the_permalink', get_permalink())) . '" class="more-link">'
+				. apply_filters( 'the_content_more_link',
+					'<a href="'. esc_url( apply_filters( 'the_permalink', get_permalink() ) ) . '" class="more-link">'
 					. $more
-					. '</a>')
+					. '</a>',
+					$more )
 				. '</p>' . "\n";
 		}
 
@@ -169,4 +169,3 @@ class fancy_excerpt {
 } # fancy_excerpt
 
 $fancy_excerpt = new fancy_excerpt();
-?>
