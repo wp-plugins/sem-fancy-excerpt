@@ -58,6 +58,10 @@ I'm aware. Last I checked, there wasn't anything I could do about it.
 
 == Change Log ==
 
+= 3.3.1 =
+
+- Simple code change to PHP5 constructor call
+
 = 3.3 =
 
 - Fixed missing 2nd parameter in 'the_content_more_link' filter call.
