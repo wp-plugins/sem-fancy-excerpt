@@ -3,7 +3,7 @@
 Plugin Name: Fancy Excerpt
 Plugin URI: http://www.semiologic.com/software/fancy-excerpt/
 Description: Enhances WordPress' default excerpt generator by generating paragraph aware excerpts followed by more... links.
-Version: 3.3.1
+Version: 3.4
 Author: Denis de Bernardy & Mike Koepke
 Author URI: http://www.getsemiologic.com
 Text Domain: fancy-excerpt
@@ -19,9 +19,6 @@ This software is copyright Denis de Bernardy & Mike Koepke, and is distributed u
 **/
 
 
-load_plugin_textdomain('fancy-excerpt', false, dirname(plugin_basename(__FILE__)) . '/lang');
-
-
 /**
  * fancy_excerpt
  *
@@ -29,13 +26,86 @@ load_plugin_textdomain('fancy-excerpt', false, dirname(plugin_basename(__FILE__)
  **/
 
 class fancy_excerpt {
-    /**
-     * fancy_excerpt()
-     */
+	/**
+	 * Plugin instance.
+	 *
+	 * @see get_instance()
+	 * @type object
+	 */
+	protected static $instance = NULL;
+
+	/**
+	 * URL to this plugin's directory.
+	 *
+	 * @type string
+	 */
+	public $plugin_url = '';
+
+	/**
+	 * Path to this plugin's directory.
+	 *
+	 * @type string
+	 */
+	public $plugin_path = '';
+
+	/**
+	 * Access this plugin’s working instance
+	 *
+	 * @wp-hook plugins_loaded
+	 * @return  object of this class
+	 */
+	public static function get_instance()
+	{
+		NULL === self::$instance and self::$instance = new self;
+
+		return self::$instance;
+	}
+
+	/**
+	 * Loads translation file.
+	 *
+	 * Accessible to other classes to load different language files (admin and
+	 * front-end for example).
+	 *
+	 * @wp-hook init
+	 * @param   string $domain
+	 * @return  void
+	 */
+	public function load_language( $domain )
+	{
+		load_plugin_textdomain(
+			$domain,
+			FALSE,
+			$this->plugin_path . 'lang'
+		);
+	}
+
+	/**
+	 * Constructor.
+	 *
+	 *
+	 */
+
     public function __construct() {
-        remove_filter('get_the_excerpt', 'wp_trim_excerpt');
-        add_filter('get_the_excerpt', array($this, 'trim_excerpt'), 1);
+	    $this->plugin_url    = plugins_url( '/', __FILE__ );
+        $this->plugin_path   = plugin_dir_path( __FILE__ );
+        $this->load_language( 'fancy-excerpt' );
+
+	    add_action( 'plugins_loaded', array ( $this, 'init' ) );
     }
+
+
+	/**
+	 * init()
+	 *
+	 * @return void
+	 **/
+
+	function init() {
+		// more stuff: register actions and filters
+		remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+        add_filter('get_the_excerpt', array($this, 'trim_excerpt'), 1);
+	}
 
     /**
 	 * trim_excerpt()
@@ -168,4 +238,4 @@ class fancy_excerpt {
 	} # unescape()
 } # fancy_excerpt
 
-$fancy_excerpt = new fancy_excerpt();
+$fancy_excerpt = fancy_excerpt::get_instance();
