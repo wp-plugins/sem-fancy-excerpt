@@ -58,9 +58,14 @@ I'm aware. Last I checked, there wasn't anything I could do about it.
 
 == Change Log ==
 
+= 3.4.1 =
+
+- Fix localization
+
 = 3.4 =
 
 - Code refactoring
+- WP 3.9 Ccmpat
 
 = 3.3.1 =
 
