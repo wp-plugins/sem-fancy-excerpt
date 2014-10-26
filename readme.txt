@@ -3,7 +3,7 @@ Contributors: Denis-de-Bernardy, Mike_Koepke
 Donate link: http://www.semiologic.com/partners/
 Tags: fancy excerpt, fancy-excerpt, excerpt, semiologic
 Requires at least: 3.0
-Tested up to: 3.9
+Tested up to: 4.0
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -57,6 +57,10 @@ I'm aware. Last I checked, there wasn't anything I could do about it.
 
 
 == Change Log ==
+
+= 3.5 =
+
+- WP 4.0 compat
 
 = 3.4.1 =
 
