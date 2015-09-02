@@ -1,6 +1,6 @@
 === Fancy Excerpt ===
 Contributors: Denis-de-Bernardy, Mike_Koepke
-Donate link: http://www.semiologic.com/partners/
+Donate link: https://www.semiologic.com/donate/
 Tags: fancy excerpt, fancy-excerpt, excerpt, semiologic
 Requires at least: 3.0
 Tested up to: 4.0
@@ -11,6 +11,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 The fancy excerpt plugin for WordPress replaces the default automatic excerpt generator with a sentence aware excerpt generator.
 
 == Description ==
+
+
+> *This plugin has been retired.  No further development will occur on it.*
 
 The fancy excerpt plugin for WordPress replaces the default automatic excerpt generator with a sentence aware excerpt generator.
 
@@ -34,9 +37,7 @@ After:
 
 = Help Me! =
 
-The [Semiologic forum](http://forum.semiologic.com) is the best place to report issues. Please note, however, that while community members and I do our best to answer all queries, we're assisting you on a voluntary basis.
-
-If you require more dedicated assistance, consider using [Semiologic Pro](http://www.getsemiologic.com).
+No further support is provided.
 
 
 == Installation ==
@@ -57,6 +58,10 @@ I'm aware. Last I checked, there wasn't anything I could do about it.
 
 
 == Change Log ==
+
+= 3.5.1 =
+
+- Development has ceased on this plugin.  Updated source and readme accordingly
 
 = 3.5 =
 

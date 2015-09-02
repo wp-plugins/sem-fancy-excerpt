@@ -2,10 +2,10 @@
 /*
 Plugin Name: Fancy Excerpt
 Plugin URI: http://www.semiologic.com/software/fancy-excerpt/
-Description: Enhances WordPress' default excerpt generator by generating paragraph aware excerpts followed by more... links.
-Version: 3.5
+Description: RETIRED - Enhances WordPress' default excerpt generator by generating paragraph aware excerpts followed by more... links.
+Version: 3.5.1
 Author: Denis de Bernardy & Mike Koepke
-Author URI: http://www.getsemiologic.com
+Author URI: https://www.semiologic.com
 Text Domain: fancy-excerpt
 Domain Path: /lang
 License: Dual licensed under the MIT and GPLv2 licenses
@@ -17,6 +17,10 @@ Terms of use
 
 This software is copyright Denis de Bernardy & Mike Koepke, and is distributed under the terms of the MIT and GPLv2 licenses.
 **/
+
+/*
+ * This plugin has been retired.  No further development will occur on it.
+ * */
 
 
 /**
